@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pelanggan', function (Blueprint $table) {
-            $table->id();
-            $table->char('nama');
+            $table->id()->notnull();
+            $table->char('nama',50);
             $table->integer('umur');
-            $table->string('email');
-            $table->string('password');
+            $table->string('email',45)->unique();
+            $table->string('password', 45);
             $table->timestamps();
         });
     }
