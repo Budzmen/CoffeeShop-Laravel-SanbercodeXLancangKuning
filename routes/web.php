@@ -17,3 +17,5 @@ use App\Http\Controllers\OrderItemController;
 Route::get('/', function () {
     return view('page.index');
 });
+
+Route::resource('orderItem', OrderItemController::class);

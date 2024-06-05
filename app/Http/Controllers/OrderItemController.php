@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\OrderItem;
 
-class OrderItemControler extends Controller
+class OrderItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return 'berhasil';
     }
 
     /**
@@ -19,7 +20,7 @@ class OrderItemControler extends Controller
      */
     public function create()
     {
-        //
+        return view('OrderItem.tambah');
     }
 
     /**
@@ -27,7 +28,17 @@ class OrderItemControler extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jumlah' => 'required',
+        ]);
+
+        $orderitem = new OrderItem;
+ 
+        $orderitem->jumlah = $request->input('jumlah');
+ 
+        $orderitem->save();
+ 
+        return redirect('/orderItem');
     }
 
     /**
